@@ -31,6 +31,7 @@
 		<members>Opportunity.OrderNumber__c</members>
 		<members>Opportunity.Project_Manager__c</members>
 		<members>Opportunity.Start_Date__c</members>
+		<members>Opportunity.Total_Amount__c</members>
 		<members>Opportunity.TrackingNumber__c</members>
 		<members>OpportunityLineItem.Amount__c</members>
 		<members>OpportunityLineItem.Detail__c</members>
