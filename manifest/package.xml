@@ -36,8 +36,11 @@
 		<members>OpportunityLineItem.Detail__c</members>
 		<members>OpportunityLineItem.Role__c</members>
 		<members>OpportunityLineItem.Squad_Lead__c</members>
+		<members>Project_Product__c.Amount__c</members>
+		<members>Project_Product__c.Project__c</members>
+		<members>Project_Product__c.Quantity__c</members>
+		<members>Project_Product__c.Role__c</members>
 		<members>Project_Resource__c.Close_Date__c</members>
-		<members>Project_Resource__c.Is_Squad_Lead__c</members>
 		<members>Project_Resource__c.Project__c</members>
 		<members>Project_Resource__c.Resource__c</members>
 		<members>Project_Resource__c.Start_Date__c</members>
@@ -55,6 +58,7 @@
 	<types>
 		<members>Opportunity</members>
 		<members>OpportunityLineItem</members>
+		<members>Project_Product__c</members>
 		<members>Project_Resource__c</members>
 		<members>Project__c</members>
 		<members>User</members>
@@ -67,6 +71,15 @@
 	<types>
 		<members>*</members>
 		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>Opportunity-Opportunity %28Sales%29 Layout</members>
+		<members>Opportunity-Opportunity Layout</members>
+		<members>OpportunityLineItem-Opportunity Product Layout</members>
+		<members>Project_Product__c-Project Product Layout</members>
+		<members>Project_Resource__c-Project Resource Layout</members>
+		<members>Project__c-Project Layout</members>
+		<name>Layout</name>
 	</types>
 	<types>
 		<members>Admin</members>
