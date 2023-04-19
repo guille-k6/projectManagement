@@ -118,9 +118,9 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Project_Manager__c</field>
+            <field>OwnerId</field>
             <value>
-                <elementReference>$Record.Project_Manager__c</elementReference>
+                <elementReference>$Record.Owner.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
