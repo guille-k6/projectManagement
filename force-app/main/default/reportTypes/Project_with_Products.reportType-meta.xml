@@ -133,6 +133,11 @@
             <field>Role__c</field>
             <table>Project__c.Project_Products__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Completed_Hours__c</field>
+            <table>Project__c.Project_Products__r</table>
+        </columns>
         <masterLabel>Project Products</masterLabel>
     </sections>
 </ReportType>

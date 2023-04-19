@@ -143,6 +143,11 @@
             <field>Role__c</field>
             <table>Project__c.Projects_Resources__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AssignedHours__c</field>
+            <table>Project__c.Projects_Resources__r</table>
+        </columns>
         <masterLabel>Projects Resources</masterLabel>
     </sections>
 </ReportType>
