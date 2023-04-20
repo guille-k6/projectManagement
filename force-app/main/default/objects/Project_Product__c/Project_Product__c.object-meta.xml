@@ -155,8 +155,9 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Project Product</label>
     <nameField>
+        <displayFormat>ProjectProduct-{0000}</displayFormat>
         <label>Project Product Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Project Products</pluralLabel>
     <searchLayouts></searchLayouts>

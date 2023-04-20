@@ -35,13 +35,17 @@
 		<members>Opportunity.TrackingNumber__c</members>
 		<members>OpportunityLineItem.Amount__c</members>
 		<members>OpportunityLineItem.Detail__c</members>
+		<members>OpportunityLineItem.Role1__c</members>
 		<members>OpportunityLineItem.Role__c</members>
 		<members>OpportunityLineItem.Squad_Lead__c</members>
+		<members>OpportunityLineItem.Total_Amount__c</members>
+		<members>Product2.Role__c</members>
 		<members>Project_Product__c.Amount__c</members>
 		<members>Project_Product__c.Project__c</members>
 		<members>Project_Product__c.Quantity__c</members>
 		<members>Project_Product__c.Role__c</members>
 		<members>Project_Resource__c.Close_Date__c</members>
+		<members>Project_Resource__c.Is_Squad_Lead__c</members>
 		<members>Project_Resource__c.Project__c</members>
 		<members>Project_Resource__c.Resource__c</members>
 		<members>Project_Resource__c.Start_Date__c</members>
@@ -74,6 +78,10 @@
 		<name>FlexiPage</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>Flow</name>
+	</types>
+	<types>
 		<members>Opportunity-Opportunity %28Sales%29 Layout</members>
 		<members>Opportunity-Opportunity Layout</members>
 		<members>OpportunityLineItem-Opportunity Product Layout</members>
@@ -94,6 +102,16 @@
 	<types>
 		<members>*</members>
 		<name>ProfileSessionSetting</name>
+	</types>
+	<types>
+		<members>unfiled$public/Percentajes_of_nA4</members>
+		<members>unfiled$public/Project_with_indicators_Gq7</members>
+		<members>unfiled$public/flow_screen_prebuilt_report</members>
+		<name>Report</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>ReportType</name>
 	</types>
 	<types>
 		<members>*</members>
