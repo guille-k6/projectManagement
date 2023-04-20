@@ -120,7 +120,7 @@
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <elementReference>$Record.Owner.Id</elementReference>
+                <elementReference>$Record.Project_Manager__r.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
