@@ -26,6 +26,10 @@
                 <behavior>Edit</behavior>
                 <field>Close_Date__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AssignedHours__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
