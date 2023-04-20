@@ -41,13 +41,16 @@
 		<members>OpportunityLineItem.Total_Amount__c</members>
 		<members>Product2.Role__c</members>
 		<members>Project_Product__c.Amount__c</members>
+		<members>Project_Product__c.Completed_Hours__c</members>
 		<members>Project_Product__c.Project__c</members>
 		<members>Project_Product__c.Quantity__c</members>
 		<members>Project_Product__c.Role__c</members>
+		<members>Project_Resource__c.AssignedHours__c</members>
 		<members>Project_Resource__c.Close_Date__c</members>
 		<members>Project_Resource__c.Is_Squad_Lead__c</members>
 		<members>Project_Resource__c.Project__c</members>
 		<members>Project_Resource__c.Resource__c</members>
+		<members>Project_Resource__c.Role__c</members>
 		<members>Project_Resource__c.Start_Date__c</members>
 		<members>Project__c.Amount__c</members>
 		<members>Project__c.Client__c</members>
@@ -104,6 +107,8 @@
 		<name>ProfileSessionSetting</name>
 	</types>
 	<types>
+		<members>unfiled$public/Hours_Required_vs_Assigned_ACW</members>
+		<members>unfiled$public/My_Projects_EzS</members>
 		<members>unfiled$public/Percentajes_of_nA4</members>
 		<members>unfiled$public/Project_with_indicators_Gq7</members>
 		<members>unfiled$public/flow_screen_prebuilt_report</members>

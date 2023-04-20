@@ -7,13 +7,14 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Project__c.Project_Products__r$Quantity__c</column>
+            <column>Project__c.Project_Products__r$Completed_Hours__c</column>
         </chartSummaries>
         <chartSummaries>
+            <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>RowCount</column>
+            <column>Project__c.Project_Products__r$Quantity__c</column>
         </chartSummaries>
-        <chartType>VerticalColumnLine</chartType>
+        <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>Project__c.Project_Products__r$Role__c</groupingColumn>
@@ -22,12 +23,11 @@
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Hours required by Role</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -35,22 +35,17 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Project__c.Project_Products__r$Quantity__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>Project__c.Project_Products__r$Role__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>,Developer,Consultant,Project Manager,Architect</value>
-        </criteriaItems>
-    </filter>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Project__c.Project_Products__r$Completed_Hours__c</field>
+    </columns>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Project__c.Project_Products__r$Role__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Project hours by role required</name>
+    <name>Hours Required vs Assigned</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -61,7 +56,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Project__c$Close_Date__c</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <dateColumn>Project__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
     </timeFrameFilter>
 </Report>
