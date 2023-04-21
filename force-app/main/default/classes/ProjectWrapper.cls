@@ -9,23 +9,23 @@ public class ProjectWrapper {
     @auraEnabled
     public List<User> Resources; //Set<Id> Resources;?
     
-    public ProjectWrapper (Project__c Project, List<Project_Resource__c> ProjectResources, 
-						   List<Project_Product__c> ProjectProducts, List<User> Resources){
-            this.project = project;
-            this.ProjectProducts = ProjectProducts;
-            this.ProjectResources = ProjectResources;
-            this.Resources = Resources;
-        }      	 
+    public ProjectWrapper (Project__c Project, List<Project_Resource__c> ProjectResources, List<Project_Product__c> ProjectProducts, List<User> Resources){
+        this.project = project;
+        this.ProjectProducts = ProjectProducts;
+        this.ProjectResources = ProjectResources;
+        this.Resources = Resources;
+    }      	 
 
 
-    public static projectWrapper getProject (Id ProjectId) {
+    @AuraEnabled(cacheable=true)
+    public static ProjectWrapper getProject (Id projectId) {
         List<Project_Product__c> ProjectProducts = [SELECT Id, Project__c, Quantity__c, Amount__c, Role__c, Completed_Hours__c 
 													FROM Project_Product__c 
-                                                    WHERE Project__c = :ProjectId];
+                                                    WHERE Project__c = :projectId];
         
         List<Project_Resource__c> ProjectResources = [SELECT Id, Project__c, Resource__c, Start_Date__c, Close_Date__c, Role__c, AssignedHours__c, Is_Squad_Lead__c 
                                                      FROM Project_Resource__c 
-                                                     WHERE Project__c = :ProjectId];
+                                                     WHERE Project__c = :projectId];
         
        /* List<Id> ResourcesIds = new List<Id>();
         
@@ -39,7 +39,7 @@ public class ProjectWrapper {
         List<User> Resources = [SELECT Id, Rate__c, UserRoleId FROM User WHERE UserRoleId in :roles];
         
         Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c
- 							FROM Project__c WHERE Id =: ProjectId];
+ 							FROM Project__c WHERE Id = :projectId];
         
         ProjectWrapper pr2 = new ProjectWrapper(Project, ProjectResources, ProjectProducts, Resources);
 
