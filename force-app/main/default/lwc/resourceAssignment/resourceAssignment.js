@@ -18,21 +18,4 @@ export default class ResourceAssignment extends LightningElement {
         }
     }
 
-    // renderedCallback(){
-    //     getProject( {projectId: this.recordId} )
-    //     .then(result =>{
-    //         console.log('este es el result');
-    //         console.log(result);
-    //         this.data = result;
-    //     })
-    //     .catch(error => {
-    //         console.log(this.recordId);
-    //         console.log('este es el error');
-    //         console.log(error);
-    //         this.error = error;
-    //     })
-    //     console.log('DATA O ERROR');
-    //     console.log(this.data);
-    //     console.log(this.error);
-    // }
 }
