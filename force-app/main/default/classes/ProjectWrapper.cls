@@ -32,9 +32,18 @@ public class ProjectWrapper {
                               FROM Project__c WHERE Id = :projectId];
         
         // Project products of the project.
-        List<Project_Product__c> projectProducts = [SELECT Id, Project__c, Quantity__c, Amount__c, Role__c, Completed_Hours__c 
+        List<Project_Product__c> allProjectProducts = [SELECT Id, Project__c, Quantity__c, Amount__c, Role__c, Completed_Hours__c 
 													FROM Project_Product__c 
                                                     WHERE Project__c = :projectId];
+        
+        List<Project_Product__c> projectProducts = new List<Project_Product__c>();
+        for(Project_Product__c pp : allProjectProducts){          
+            if(pp.Quantity__c > pp.Completed_Hours__c){
+                projectProducts.add(pp);
+            }
+        }
+        System.debug(projectProducts);
+        
         // Roles required in the project.
         Set<String> rolesNames = new Set<String>();
         for(Project_Product__c pp : projectProducts){

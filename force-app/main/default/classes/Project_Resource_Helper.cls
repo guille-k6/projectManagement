@@ -35,7 +35,7 @@ public class Project_Resource_Helper {
                 }
 				pp.Completed_Hours__c = counter; 
             }
-            ProjectProductsToUpdate.add(project.Project_Products__r);            
+            ProjectProductsToUpdate.addAll(project.Project_Products__r);            
         }
         
         update ProjectProductsToUpdate;   

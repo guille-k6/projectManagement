@@ -41,17 +41,14 @@ export default class ResourceAssignment extends LightningElement {
 
   renderedCallback(){
     if(this.data){
-      console.log('aca esta la data');
-      console.log(this.data);
+
       const userBoxes = this.template.querySelectorAll('.userBox');
-      console.log('userboxes');
-      console.log(userBoxes);
+
       userBoxes.forEach((box) => {
         const parent = box.parentNode;
         const lastChild = parent.lastChild;
         lastChild.classList.add('lastUserBoxChild');
       });
-      console.log('Im adding this classes');
     }
   }
 
