@@ -1,18 +1,31 @@
 public class ProjectWrapper {
     
+    public class Requirements{
+        public Requirements(Project_Product__c pp, List<User> u){
+            projectProduct = pp;
+            users = u;
+        }
+        @AuraEnabled
+        public Project_Product__c projectProduct;
+        @AuraEnabled
+        public List<User> users;
+    }
+    
     @auraEnabled
     public Project__c project;
     @auraEnabled
-    public Map<Project_Product__c, List<User>> productsWithUsers;
+    public List<Requirements> requirementList;
     
-    public ProjectWrapper (Project__c Project, Map<Project_Product__c, List<User>> productsWithUsers){
+    public ProjectWrapper (Project__c Project, List<Requirements> requirements){
         this.project = project;
-        this.productsWithUsers = productsWithUsers;
+        this.requirementList = requirements;
     }      	 
 
 
     @AuraEnabled(cacheable=true)
     public static ProjectWrapper getProject (Id projectId) {
+        
+        List<Requirements> requirementList = new List<Requirements>();
         
         // Information related to the project.
         Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c
@@ -52,7 +65,7 @@ public class ProjectWrapper {
         List<User> usersAvailable = [SELECT Id, Name, Rate__c, UserRole.Name FROM User
                                     WHERE UserRole.Name IN :rolesNames AND ID NOT IN :projectResourcesNotAvailable];
         
-        Map<Project_Product__c, List<User>> productsWithUsers = new Map<Project_Product__c, List<User>>();
+        Map<String, List<User>> productsWithUsers = new Map<String, List<User>>();
         for(Project_Product__c pp : projectProducts){
             List<User> usersWithRoleOfPP = new List<User>();
             for(User u : usersAvailable){
@@ -60,10 +73,11 @@ public class ProjectWrapper {
                     usersWithRoleOfPP.add(u);
                 }
             }
-            productsWithUsers.put(pp, usersWithRoleOfPP);         
+            Requirements r = new Requirements(pp, usersWithRoleOfPP);
+            requirementList.add(r);
         }
         
-        ProjectWrapper wrapper = new ProjectWrapper(project, productsWithUsers);
+        ProjectWrapper wrapper = new ProjectWrapper(project, requirementList);
         return wrapper;
     }
 }

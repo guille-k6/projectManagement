@@ -1,5 +1,29 @@
 <template>
-    <lightning-card>
-        <p>Soy un LWC. Mira el console.log</p>
-    </lightning-card>
+    <template if:true={data}>
+        <div class="assignmentContainer">
+            <h1 class="resourcesTitle">Resources assignment to the project</h1>
+            <template for:each={requirements} for:item="requirement">
+                <div key={requirement.projectProduct.Id} class="projectProductTitle">
+                    <div class="hoursLayout hours">
+                        <p class="projectProductRole">{requirement.projectProduct.Role__c}</p>
+                        <p>Hours required: {requirement.projectProduct.Quantity__c}</p>
+                        <p class="hoursMissing">Hours pending assignment: {requirement.projectProduct.hoursMissing}</p>
+                    </div>
+                    <template for:each={requirement.users} for:item="user" for:index="index">
+                        <div key={user.Id} class="d-flex userBox">
+                            <p class="userBoxCheckbox"><lightning-input type="checkbox" name="isSelected"></lightning-input></p>
+                            <p class="userBoxParagraph">{user.Name}</p>
+                            <p class="userBoxParagraph">{user.Rate__c} $/hour</p>
+                            <p class="userBoxParagraph"><lightning-input class='dateInput' type="date" name="startDate" label="Start date:" required></lightning-input></p>
+                            <p class="userBoxParagraph"><lightning-input class='dateInput' type="date" name="finishDate" label="Finish date:" required></lightning-input></p>
+                            <p class="userBoxParagraph"><lightning-input type="number" name="hoursAssigned" required label="Hours assigned" min="0"></lightning-input></p>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </template>
+    <template if:false={data}>
+        <h1>Lamentablemente no se pudo cargar el modulo de asignacion de recursos.</h1>
+    </template>
 </template>

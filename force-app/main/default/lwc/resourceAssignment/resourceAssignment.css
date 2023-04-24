@@ -1,0 +1,58 @@
+.resourcesTitle{
+    font-size: large;
+    font-weight: 600;
+    width: max-content;
+    border-bottom: solid 1px #b0adab;
+    padding: 0px 2px;
+}
+.assignmentContainer{
+    background-color: #ffffff;
+    border: 1px solid #c9c9c9;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+}
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.hoursLayout{
+    display: flex;
+    align-items: center;
+}
+.hoursLayout p{
+    width: 20%;
+}
+.projectProductTitle{
+    padding: 1rem;
+}
+.dateInput{
+    margin:4px;
+}
+.projectProductRole{
+    font-size: x-large;
+    width: max-content;
+    padding: 2px;
+    text-decoration: underline 2px solid #1b96ff;
+}
+.userBox{
+    padding: 0.5rem 1.2rem;
+    margin: 0.5rem 0rem;
+    border-top: 1px solid #c4c3c3;
+}
+.hours{
+    font-size:medium;
+    font-weight: 400;
+}
+.hoursMissing{
+    color: #747474;
+}
+.userBoxParagraph{
+    width: 16%;
+}
+.lastUserBoxChild{
+    padding: 0.5rem 1.2rem;
+    margin: 0.5rem 0rem;
+    border-bottom: 1px solid #c4c3c3;
+}
