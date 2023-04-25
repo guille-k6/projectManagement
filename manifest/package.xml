@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>CustomDatesException</members>
 		<members>ProjectService</members>
 		<members>ProjectWrapper</members>
 		<members>ProjectWrapperTest</members>
 		<members>Project_Resource_Helper</members>
 		<members>Project_Resource_Helper_Test</members>
 		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>ApexTrigger</name>
 	</types>
 	<types>
 		<members>Project_Management</members>
@@ -102,6 +107,10 @@
 		<name>Layout</name>
 	</types>
 	<types>
+		<members>resourceAssignment</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
 		<members>Admin</members>
 		<members>Project Manager</members>
 		<name>Profile</name>
@@ -129,11 +138,6 @@
 	<types>
 		<members>*</members>
 		<name>Role</name>
-	</types>
-	<types>
-		<members>Project_Resource__c.Avoid_Create</members>
-		<members>Project__c.AvoidChanges</members>
-		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>
 </Package>
