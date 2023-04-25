@@ -52,4 +52,35 @@ export default class ResourceAssignment extends LightningElement {
     }
   }
 
+  handleAssignClick(){
+    // Get all the checkboxes
+    const checkboxes = Array.from(this.template.querySelectorAll('.inputCheckbox'));
+
+    let selectedUsers = [];
+
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        
+        const userBox = checkbox.closest('.userBox');
+        const userId = userBox.querySelector('.userBoxParagraph').getAttribute('data-userid');
+        const startDate = userBox.querySelector('.startDate').value;
+        const finishDate = userBox.querySelector('.closeDate').value;
+        const assignedHours = userBox.querySelector('.hoursAssigned').value;
+
+        // Add the data to the selectedUsers array
+        selectedUsers.push({
+          Project__c: this.recordId,
+          Resource__c: userId,
+          Start_Date__c: startDate,
+          Close_Date__c: finishDate,
+          AssignedHours__c: assignedHours
+        });
+      }
+    });
+
+    // Do something with the selectedUsers array
+    console.log(selectedUsers);
+
+  }
+
 }
