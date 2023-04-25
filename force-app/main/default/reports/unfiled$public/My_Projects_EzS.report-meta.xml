@@ -16,9 +16,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Projects__r$Amount__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Projects__r$Squad_Lead__c</field>
-    </columns>
     <format>Tabular</format>
     <name>My Projects</name>
     <params>

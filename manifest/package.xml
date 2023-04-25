@@ -55,6 +55,7 @@
 		<members>Project_Product__c.Role__c</members>
 		<members>Project_Resource__c.AssignedHours__c</members>
 		<members>Project_Resource__c.Close_Date__c</members>
+		<members>Project_Resource__c.Cost__c</members>
 		<members>Project_Resource__c.Is_Squad_Lead__c</members>
 		<members>Project_Resource__c.Project__c</members>
 		<members>Project_Resource__c.Resource__c</members>
@@ -63,17 +64,25 @@
 		<members>Project__c.Amount__c</members>
 		<members>Project__c.Client__c</members>
 		<members>Project__c.Close_Date__c</members>
+		<members>Project__c.Completed_Hours__c</members>
+		<members>Project__c.Cost__c</members>
 		<members>Project__c.Opportunity__c</members>
 		<members>Project__c.Project_Manager__c</members>
 		<members>Project__c.Squad_Lead__c</members>
 		<members>Project__c.Start_Date__c</members>
+		<members>Project__c.Start_Today__c</members>
 		<members>Project__c.Status__c</members>
+		<members>Project__c.Total_Hours__c</members>
+		<members>Project__c.Validation_Hours__c</members>
+		<members>Project__c.Validation_Profit__c</members>
+		<members>Project__c.Validation_Squad_Lead__c</members>
 		<members>User.Rate__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
 		<members>Opportunity</members>
 		<members>OpportunityLineItem</members>
+		<members>Product2</members>
 		<members>Project_Product__c</members>
 		<members>Project_Resource__c</members>
 		<members>Project__c</members>
@@ -129,6 +138,12 @@
 	<types>
 		<members>*</members>
 		<name>Role</name>
+	</types>
+	<types>
+		<members>Project__c.Error_Balance</members>
+		<members>Project__c.Error_Hours</members>
+		<members>Project__c.Error_Squad_Lead</members>
+		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>
 </Package>

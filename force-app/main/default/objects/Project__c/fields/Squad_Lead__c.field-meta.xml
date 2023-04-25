@@ -4,7 +4,8 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Squad Lead</label>
-    <referenceTo>User</referenceTo>
+    <referenceTo>Project_Resource__c</referenceTo>
+    <relationshipLabel>Projects</relationshipLabel>
     <relationshipName>Projects</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

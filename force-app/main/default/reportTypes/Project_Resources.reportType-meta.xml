@@ -71,6 +71,11 @@
             <field>AssignedHours__c</field>
             <table>Project_Resource__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cost__c</field>
+            <table>Project_Resource__c</table>
+        </columns>
         <masterLabel>Projects Resources</masterLabel>
     </sections>
 </ReportType>
