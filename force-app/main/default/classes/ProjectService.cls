@@ -14,7 +14,6 @@ public class ProjectService {
 		*/
         
         List<Project_Resource__c> projectResources = (List<Project_Resource__c>) JSON.deserializeStrict(jsonResources, List<Project_Resource__c>.class);
-
         insert projectResources;                         
     }
 }
