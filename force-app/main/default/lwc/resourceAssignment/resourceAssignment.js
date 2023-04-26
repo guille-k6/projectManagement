@@ -11,6 +11,7 @@ export default class ResourceAssignment extends LightningElement {
     @track requirements=[];
     hasRequirements;
     economicStatus;
+    projectStatus;
     // variable to use after with the refreshApex
     refresh;
 
@@ -61,6 +62,16 @@ export default class ResourceAssignment extends LightningElement {
       if(this.data.project.Cost__c == this.data.project.Amount__c){
         return true;
       }else{
+        return false;
+      }
+    }
+
+    @api
+    get projectStatus(){
+      if(this.data.project.Status__c == 'Pre-Kickoff'){
+        return true;
+      }
+      else{
         return false;
       }
     }
