@@ -9,6 +9,8 @@ export default class ResourceAssignment extends LightningElement {
     @track data;
     error;
     @track requirements=[];
+    hasRequirements;
+    economicStatus;
     // variable to use after with the refreshApex
     refresh;
 
@@ -43,6 +45,24 @@ export default class ResourceAssignment extends LightningElement {
         } else if(result.error){
           this.error = result.error;
         }
+    }
+
+    @api
+    get hasRequirements(){
+      if(this.requirements.length > 0){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    @api
+    get economicStatus(){
+      if(this.data.project.Cost__c == this.data.project.Amount__c){
+        return true;
+      }else{
+        return false;
+      }
     }
 
 
@@ -221,6 +241,11 @@ export default class ResourceAssignment extends LightningElement {
         });
         this.dispatchEvent(toast);  
     }
-}
+  }
+
+  clickTry(){
+    console.log(this.hasRequirements);
+    console.log(JSON.parse(JSON.stringify(this.requirements)));
+  }
 
 }
