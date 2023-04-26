@@ -1,29 +1,38 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import getProject from '@salesforce/apex/ProjectWrapper.getProject';
+import addResources from '@salesforce/apex/ProjectService.addResources';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import {refreshApex} from '@salesforce/apex';
 
 export default class ResourceAssignment extends LightningElement {
     @api recordId;
-    data;
+    @track data;
     error;
     @track requirements=[];
+    // variable to use after with the refreshApex
+    refresh;
 
     @wire(getProject, {projectId: '$recordId'})
-    theWrapper({ error, data }) {
-        if (data) {
-          this.data = data;
+    theWrapper(result) {
+        // using theWrapper(result) structure to use refreshApex
+        // Previously used theWrapper( {data, error} ) didn't work refresh apex that way.
+        this.refresh = result
+        if(result.data) {
+          this.data = result.data;
           this.error = undefined;
 
-          const newData = [...data.requirementList];
-          // updatedData is like data.requirementList but with hoursMissing field adittion.
+          const newData = [...result.data.requirementList];
           this.requirements = newData.map(obj => {
+            //const projectProduct = obj.projectProduct;
             const { projectProduct } = obj;
             let hoursMissing;
-            if(hoursMissing = projectProduct.Quantity__c - projectProduct.Completed_Hours__c < 0){
+            if( (projectProduct.Quantity__c - projectProduct.Completed_Hours__c) < 0){
               hoursMissing = 0;
             }else{
               hoursMissing = projectProduct.Quantity__c - projectProduct.Completed_Hours__c;
             }
             return {
+              // el ...obj me trae copia de un objeto Requirement del wrapper con su projectProduct y su lista de Users
               ...obj,
               projectProduct: {
                 ...projectProduct,
@@ -31,12 +40,10 @@ export default class ResourceAssignment extends LightningElement {
               }
             };
           });
-        } else if (error) {
-          this.error = error;
+        } else if(result.error){
+          this.error = result.error;
         }
     }
-
-    // SubmitButton handler
 
 
   renderedCallback(){
@@ -184,11 +191,36 @@ export default class ResourceAssignment extends LightningElement {
 
     if(flag===false){
       selectedUsers = [];
+    }else{
+      addResources( { projectId : this.recordId, jsonResources : JSON.stringify(selectedUsers) } )
+      .then(response => {
+        console.log('se asigno bien');
+        this.showToastMessage(true);
+        refreshApex(this.refresh);
+      })
+      .catch(error => {
+        console.log('no se pudo asignar');
+        this.showToastMessage(false);
+      });
     }
-
-    // Do something with the selectedUsers array
-    console.log(JSON.parse(JSON.stringify(selectedUsers)));
-
   }
+
+  showToastMessage(cond){
+    if(cond){
+        const toast = new ShowToastEvent({
+            title: 'Success',
+            message: 'Resources allocated successfully.',
+            variant: 'success',
+        });
+        this.dispatchEvent(toast);          
+    }else{
+        const toast = new ShowToastEvent({
+            title: 'Failure',
+            message: 'Something went wrong.',
+            variant: 'error',
+        });
+        this.dispatchEvent(toast);  
+    }
+}
 
 }
