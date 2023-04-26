@@ -155,8 +155,9 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Project Resource</label>
     <nameField>
+        <displayFormat>ProjectResource-{0000}</displayFormat>
         <label>Project Resource Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Projects Resources</pluralLabel>
     <searchLayouts></searchLayouts>

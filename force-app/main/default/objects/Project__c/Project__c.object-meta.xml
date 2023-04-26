@@ -155,7 +155,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Project</label>
     <nameField>
-        <displayFormat>Product - {0000}</displayFormat>
+        <displayFormat>Project - {0000}</displayFormat>
         <label>Project Name</label>
         <type>AutoNumber</type>
     </nameField>

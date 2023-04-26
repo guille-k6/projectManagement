@@ -14,14 +14,14 @@
                             <lightning-input type="checkbox" name="isSelected" class="inputCheckbox"></lightning-input>
                             <p class="userBoxParagraph" data-userid={user.Id}>{user.Name}</p>
                             <p class="userBoxParagraph">{user.Rate__c} $/hour</p>
-                            <lightning-input class='dateInput userBoxParagraph startDate' type="date" name="startDate" label="Start date:"></lightning-input>
-                            <lightning-input class='dateInput userBoxParagraph closeDate' type="date" name="finishDate" label="Finish date:"></lightning-input>
-                            <lightning-input class='userBoxParagraph hoursAssigned' type="number" name="hoursAssigned" required label="Hours assigned" min="0"></lightning-input>
+                            <lightning-input class='dateInput userBoxParagraph startDate' type="date" name="startDate" label="Start date:" timezone="America/Argentina/Buenos_Aires"></lightning-input>
+                            <lightning-input class='dateInput userBoxParagraph closeDate' type="date" name="finishDate" label="Finish date:" timezone="America/Argentina/Buenos_Aires"></lightning-input>
+                            <lightning-input class='userBoxParagraph hoursAssigned' type="number" name="hoursAssigned" label="Hours assigned" min="0"></lightning-input>
                         </div>
                     </template>
                 </div>
             </template>
-            <lightning-button label="Assign resources" title="Toggle content action" onclick={handleAssignClick}>
+            <lightning-button class='assignButton' label="Assign resources" title="Toggle content action" onclick={handleAssignClick}>
             </lightning-button>
         </div>
     </template>

@@ -67,11 +67,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Project_Manager__c</field>
-            <table>Project__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Close_Date__c</field>
             <table>Project__c</table>
         </columns>
@@ -123,6 +118,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Validation_Hours__c</field>
+            <table>Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Validation_Status__c</field>
             <table>Project__c</table>
         </columns>
         <masterLabel>Projects</masterLabel>

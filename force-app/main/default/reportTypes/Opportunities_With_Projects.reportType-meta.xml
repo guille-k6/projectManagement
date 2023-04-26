@@ -318,6 +318,11 @@
             <field>Validation_Hours__c</field>
             <table>Opportunity.Projects__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Validation_Status__c</field>
+            <table>Opportunity.Projects__r</table>
+        </columns>
         <masterLabel>Projects</masterLabel>
     </sections>
 </ReportType>

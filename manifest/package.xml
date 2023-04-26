@@ -72,7 +72,6 @@
 		<members>Project__c.Completed_Hours__c</members>
 		<members>Project__c.Cost__c</members>
 		<members>Project__c.Opportunity__c</members>
-		<members>Project__c.Project_Manager__c</members>
 		<members>Project__c.Squad_Lead__c</members>
 		<members>Project__c.Start_Date__c</members>
 		<members>Project__c.Start_Today__c</members>
