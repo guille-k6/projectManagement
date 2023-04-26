@@ -3,8 +3,6 @@
     <fullName>Error_Status</fullName>
     <active>true</active>
     <description>The PM will not be able to make changes while the project is in progress.</description>
-    <errorConditionFormula>AND( ISPICKVAL(Status__c , &apos;In Progress&apos;),
-IF( !Validation_Status__c  , false, true)
-)</errorConditionFormula>
+    <errorConditionFormula>IF( ! Validation_Status__c  , false, true)</errorConditionFormula>
     <errorMessage>You can&apos;t make changes to a record if it is already in progress</errorMessage>
 </ValidationRule>

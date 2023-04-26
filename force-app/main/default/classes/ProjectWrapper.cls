@@ -28,7 +28,7 @@ public class ProjectWrapper {
         List<Requirements> requirementList = new List<Requirements>();
         
         // Information related to the project.
-        Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c
+        Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c, Cost__c, Status__c
                               FROM Project__c WHERE Id = :projectId];
         
         // Project products of the project.

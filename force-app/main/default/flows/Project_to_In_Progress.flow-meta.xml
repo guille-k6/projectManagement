@@ -5,7 +5,7 @@
         <name>Does_it_have_Squad_Lead</name>
         <label>Does it have Squad Lead?</label>
         <locationX>611</locationX>
-        <locationY>335</locationY>
+        <locationY>311</locationY>
         <defaultConnector>
             <targetReference>Check_Validation_Squad_Lead</targetReference>
         </defaultConnector>
@@ -30,7 +30,7 @@
         <name>Hours_Covered</name>
         <label>Hours Covered?</label>
         <locationX>182</locationX>
-        <locationY>815</locationY>
+        <locationY>791</locationY>
         <defaultConnector>
             <targetReference>Check_Validation_Hours</targetReference>
         </defaultConnector>
@@ -55,7 +55,7 @@
         <name>Loss_or_Profit</name>
         <label>Loss or Profit?</label>
         <locationX>380</locationX>
-        <locationY>575</locationY>
+        <locationY>551</locationY>
         <defaultConnector>
             <targetReference>Check_Validation_Profit</targetReference>
         </defaultConnector>
@@ -65,7 +65,7 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Amount__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <operator>GreaterThanOrEqualTo</operator>
                 <rightValue>
                     <elementReference>$Record.Cost__c</elementReference>
                 </rightValue>
@@ -102,7 +102,7 @@
         <name>Check_Validation_Hours</name>
         <label>Check Validation Hours</label>
         <locationX>314</locationX>
-        <locationY>935</locationY>
+        <locationY>911</locationY>
         <inputAssignments>
             <field>Validation_Hours__c</field>
             <value>
@@ -115,7 +115,7 @@
         <name>Check_Validation_Profit</name>
         <label>Check Validation Profit</label>
         <locationX>578</locationX>
-        <locationY>695</locationY>
+        <locationY>671</locationY>
         <inputAssignments>
             <field>Validation_Profit__c</field>
             <value>
@@ -128,7 +128,7 @@
         <name>Check_Validation_Squad_Lead</name>
         <label>Check Validation Squad Lead</label>
         <locationX>842</locationX>
-        <locationY>455</locationY>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>Validation_Squad_Lead__c</field>
             <value>
@@ -141,13 +141,7 @@
         <name>Project_To_In_Progress</name>
         <label>Project To In Progress</label>
         <locationX>50</locationX>
-        <locationY>935</locationY>
-        <inputAssignments>
-            <field>Status__c</field>
-            <value>
-                <stringValue>In Progress</stringValue>
-            </value>
-        </inputAssignments>
+        <locationY>911</locationY>
         <inputAssignments>
             <field>Validation_Hours__c</field>
             <value>
@@ -160,7 +154,7 @@
         <name>Uncheck_Validation_Profit</name>
         <label>Uncheck Validation Profit</label>
         <locationX>182</locationX>
-        <locationY>695</locationY>
+        <locationY>671</locationY>
         <connector>
             <targetReference>Hours_Covered</targetReference>
         </connector>
@@ -176,7 +170,7 @@
         <name>Uncheck_Validation_Squad_Lead</name>
         <label>Uncheck Validation Squad Lead</label>
         <locationX>380</locationX>
-        <locationY>455</locationY>
+        <locationY>431</locationY>
         <connector>
             <targetReference>Loss_or_Profit</targetReference>
         </connector>
@@ -211,7 +205,7 @@
         </filters>
         <object>Project__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordAfterSave</triggerType>
+        <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
     <variables>

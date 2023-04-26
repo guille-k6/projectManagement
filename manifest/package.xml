@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
-		<members>CustomDatesException</members>
-		<members>ProjectService</members>
-		<members>ProjectWrapper</members>
-		<members>ProjectWrapperTest</members>
-		<members>Project_Resource_Helper</members>
-		<members>Project_Resource_Helper_Test</members>
+		<members>*</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -80,13 +75,13 @@
 		<members>Project__c.Validation_Hours__c</members>
 		<members>Project__c.Validation_Profit__c</members>
 		<members>Project__c.Validation_Squad_Lead__c</members>
+		<members>Project__c.Validation_Status__c</members>
 		<members>User.Rate__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
 		<members>Opportunity</members>
 		<members>OpportunityLineItem</members>
-		<members>Product2</members>
 		<members>Project_Product__c</members>
 		<members>Project_Resource__c</members>
 		<members>Project__c</members>
@@ -115,7 +110,7 @@
 		<name>Layout</name>
 	</types>
 	<types>
-		<members>resourceAssignment</members>
+		<members>*</members>
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
@@ -132,8 +127,6 @@
 		<name>ProfileSessionSetting</name>
 	</types>
 	<types>
-		<members>unfiled$public/Hours_Required_vs_Assigned_ACW</members>
-		<members>unfiled$public/My_Projects_EzS</members>
 		<members>unfiled$public/Percentajes_of_nA4</members>
 		<members>unfiled$public/Project_with_indicators_Gq7</members>
 		<members>unfiled$public/flow_screen_prebuilt_report</members>
@@ -151,6 +144,7 @@
 		<members>Project__c.Error_Balance</members>
 		<members>Project__c.Error_Hours</members>
 		<members>Project__c.Error_Squad_Lead</members>
+		<members>Project__c.Error_Status</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>
