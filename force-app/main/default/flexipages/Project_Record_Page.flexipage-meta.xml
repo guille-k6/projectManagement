@@ -303,6 +303,9 @@
                     <name>relatedListFieldAliases</name>
                     <valueList>
                         <valueListItems>
+                            <value>NAME</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Resource__c</value>
                         </valueListItems>
                         <valueListItems>
@@ -316,9 +319,6 @@
                         </valueListItems>
                         <valueListItems>
                             <value>AssignedHours__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>LAST_UPDATE</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>

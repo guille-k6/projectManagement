@@ -143,6 +143,7 @@
 	<types>
 		<members>Project__c.Error_Balance</members>
 		<members>Project__c.Error_Hours</members>
+		<members>Project__c.Error_Project_Resource</members>
 		<members>Project__c.Error_Squad_Lead</members>
 		<members>Project__c.Error_Status</members>
 		<name>ValidationRule</name>

@@ -230,13 +230,22 @@ export default class ResourceAssignment extends LightningElement {
         refreshApex(this.refresh);
       })
       .catch(error => {
-        console.log('no se pudo asignar');
-        this.showToastMessage(false);
+        //error.body.pageErrors[0].message
+        const str = error.body.pageErrors[0].message
+        const regex = /Exception: (.*)/; // regular expression to match the text after "Exception: "
+        const match = regex.exec(str); // applying the regular expression on the input string
+
+        if (match) {
+          const parsedText = match[1]; // extracting the matched text (group 1) from the match object
+          this.showToastMessage(false, parsedText);
+        } else {
+          this.showToastMessage(false, 'There was an error assigning the resource');
+        }
       });
     }
   }
 
-  showToastMessage(cond){
+  showToastMessage(cond, message){
     if(cond){
         const toast = new ShowToastEvent({
             title: 'Success',
@@ -247,7 +256,7 @@ export default class ResourceAssignment extends LightningElement {
     }else{
         const toast = new ShowToastEvent({
             title: 'Failure',
-            message: 'Something went wrong.',
+            message: message,
             variant: 'error',
         });
         this.dispatchEvent(toast);  
