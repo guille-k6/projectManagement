@@ -36,7 +36,7 @@
         <field>Project__c.Project_Products__r$Role__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Percentajes of hours by role</name>
+    <name>Percentages of hours by role</name>
     <params>
         <name>co</name>
         <value>1</value>

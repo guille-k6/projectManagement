@@ -112,6 +112,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Opportunity__c</field>
             <value>
                 <elementReference>$Record.Id</elementReference>

@@ -3,7 +3,7 @@
     <fullName>Error_Project_Resource</fullName>
     <active>true</active>
     <description>The Squad Lead assigned must already be a Resource of the project.</description>
-    <errorConditionFormula>Squad_Lead__r.Project__r.Id !=  Id</errorConditionFormula>
+    <errorConditionFormula>Squad_Lead__r.Project__r.Id !=  Id &amp;&amp;  NOT( ISBLANK(Squad_Lead__r.Project__r.Id  ) )</errorConditionFormula>
     <errorDisplayField>Squad_Lead__c</errorDisplayField>
     <errorMessage>The Squad Lead must be one of the resources already assigned to the project.</errorMessage>
 </ValidationRule>

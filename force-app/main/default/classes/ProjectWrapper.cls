@@ -10,15 +10,23 @@ public class ProjectWrapper {
         @AuraEnabled
         public List<User> users;
     }
-    
+    @AuraEnabled
+    public Boolean hasRequirements;
+    @AuraEnabled
+    public Boolean economicStatus;
+    @AuraEnabled
+    public Boolean isInKickoff;
     @auraEnabled
     public Project__c project;
     @auraEnabled
     public List<Requirements> requirementList;
     
-    public ProjectWrapper (Project__c Project, List<Requirements> requirements){
+    public ProjectWrapper (Project__c Project, List<Requirements> requirements, Boolean hasRequirements, Boolean economicStatus, Boolean isInKickoff){
         this.project = project;
         this.requirementList = requirements;
+        this.hasRequirements = hasRequirements;
+        this.economicStatus = economicStatus;
+        this.isInKickoff = isInKickoff;
     }      	 
 
 
@@ -28,8 +36,19 @@ public class ProjectWrapper {
         List<Requirements> requirementList = new List<Requirements>();
         
         // Information related to the project.
-        Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c, Cost__c, Status__c
+        Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c, Cost__c, Status__c, Economic_Status__c
                               FROM Project__c WHERE Id = :projectId];
+        
+        Boolean economicStatus = false;
+        if(project.Cost__c <= project.Amount__c){
+           economicStatus = true;
+        }
+        
+        Boolean isInKickoff = false;
+        if(project.Status__c == 'Pre-Kickoff'){
+            isInKickoff = true;
+        }
+        
         
         // Project products of the project.
         List<Project_Product__c> allProjectProducts = [SELECT Id, Project__c, Quantity__c, Amount__c, Role__c, Completed_Hours__c 
@@ -85,8 +104,12 @@ public class ProjectWrapper {
             Requirements r = new Requirements(pp, usersWithRoleOfPP);
             requirementList.add(r);
         }
+        Boolean hasRequirements = false;
+        if(requirementList.size() > 0){
+           hasRequirements = true;
+        }
         
-        ProjectWrapper wrapper = new ProjectWrapper(project, requirementList);
+        ProjectWrapper wrapper = new ProjectWrapper(project, requirementList, hasRequirements, economicStatus, isInKickoff);
         return wrapper;
     }
 }

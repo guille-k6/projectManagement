@@ -7,7 +7,7 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
@@ -29,6 +29,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Squad_Lead__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Economic_Status__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

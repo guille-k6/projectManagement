@@ -9,9 +9,6 @@ export default class ResourceAssignment extends LightningElement {
     @track data;
     error;
     @track requirements=[];
-    hasRequirements;
-    economicStatus;
-    projectStatus;
     // variable to use after with the refreshApex
     refresh;
 
@@ -21,6 +18,8 @@ export default class ResourceAssignment extends LightningElement {
         // Previously used theWrapper( {data, error} ) didn't work refresh apex that way.
         this.refresh = result
         if(result.data) {
+          console.log('aca esta la data');
+          console.log(result.data);
           this.data = result.data;
           this.error = undefined;
 
@@ -48,38 +47,10 @@ export default class ResourceAssignment extends LightningElement {
         }
     }
 
-    @api
-    get hasRequirements(){
-      if(this.requirements.length > 0){
-        return true;
-      }else{
-        return false;
-      }
-    }
-
-    @api
-    get economicStatus(){
-      if(this.data.project.Cost__c == this.data.project.Amount__c){
-        return true;
-      }else{
-        return false;
-      }
-    }
-
-    @api
-    get projectStatus(){
-      if(this.data.project.Status__c == 'Pre-Kickoff'){
-        return true;
-      }
-      else{
-        return false;
-      }
-    }
-
 
   renderedCallback(){
     if(this.data){
-
+      console.log(JSON.parse(JSON.stringify(this.data.project)));
       const userBoxes = this.template.querySelectorAll('.userBox');
 
       userBoxes.forEach((box) => {
@@ -222,7 +193,7 @@ export default class ResourceAssignment extends LightningElement {
 
     if(flag===false){
       selectedUsers = [];
-    }else{
+    }else if(selectedUsers.length > 0){
       addResources( { projectId : this.recordId, jsonResources : JSON.stringify(selectedUsers) } )
       .then(response => {
         console.log('se asigno bien');
@@ -230,7 +201,7 @@ export default class ResourceAssignment extends LightningElement {
         refreshApex(this.refresh);
       })
       .catch(error => {
-        //error.body.pageErrors[0].message
+        console.log(error);
         const str = error.body.pageErrors[0].message
         const regex = /Exception: (.*)/; // regular expression to match the text after "Exception: "
         const match = regex.exec(str); // applying the regular expression on the input string
@@ -242,6 +213,13 @@ export default class ResourceAssignment extends LightningElement {
           this.showToastMessage(false, 'There was an error assigning the resource');
         }
       });
+    }else{
+      this.showToastMessage(false, 'You must select at least one resource.');
+      const assignButton = this.template.querySelector('.assignButton');
+      assignButton.disabled = true;
+      setTimeout(() => {
+        assignButton.disabled = false;
+      }, 3000);
     }
   }
 

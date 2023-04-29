@@ -1,8 +1,8 @@
 .resourcesTitle{
     font-size: large;
-    font-weight: 600;
+    font-weight: 650;
     width: max-content;
-    border-bottom: solid 1px #b0adab;
+    border-bottom: solid 3px #1b96ff;
     padding: 0px 2px;
 }
 .assignmentContainer{
@@ -20,6 +20,7 @@
 .hoursLayout{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .hoursLayout p{
     width: 20%;
@@ -31,16 +32,19 @@
     margin:4px;
 }
 .projectProductRole{
-    font-size: x-large;
+    font-size: large;
     width: max-content;
     padding: 2px;
-    text-decoration: underline 2px solid #1b96ff;
+    /*text-decoration: underline 2px solid #1b96ff;*/
 }
 .userBox{
+    display: flex;
     position: relative;
-    padding: 0.5rem 1.2rem;
+    /*padding: 0.5rem 1.2rem;*/
+    justify-content: space-between;
     margin: 0.7rem 0rem;
     border-top: 1px solid #c4c3c3;
+    column-gap: 1px;
 }
 .hours{
     font-size:medium;
@@ -53,7 +57,7 @@
     width: 16%;
 }
 .lastUserBoxChild{
-    padding: 0.5rem 1.2rem;
+    padding-bottom: 0.7rem;
     margin: 0.5rem 0rem;
     border-bottom: 1px solid #c4c3c3;
 }

@@ -51,18 +51,17 @@ public class Project_Resource_Helper {
             resourcesIds.add(pr.Resource__c);
         }
         
-        List<User> users = [SELECT Id, Name, (SELECT Id, Project__c, Start_Date__c, Close_Date__c, AssignedHours__c FROM Projects_Resources__r) FROM User WHERE Id in :resourcesIds];
+        List<User> users = [SELECT Id, Name, (SELECT Id, Project__c, Resource__c, Resource__r.Name, Start_Date__c, Close_Date__c, AssignedHours__c FROM Projects_Resources__r) FROM User WHERE Id in :resourcesIds];
+       
         for(User u : users){
             for(Project_Resource__c prInsert : projectResources){
                 // Si el usuario corresponde al usuario que se le quiere asignar el proyecto:
-                System.debug(u.Name);
-                System.debug(u.Projects_Resources__r);
                 if(u.Id == prInsert.Resource__c && u.Projects_Resources__r.size() > 0){
                     for(Project_Resource__c pr : u.Projects_Resources__r){
                     	// prInsert: el recurso que se quiere insertar - pr: el recurso que ya hay
                         // Significa que las fechas al menos se ingresaron bien. Valido que el usuario no este ocupado en ese rango de fechas
-                        if(!(prInsert.Close_Date__c < pr.Start_Date__c || prInsert.Start_Date__c > pr.Close_Date__c)){
-                            throw new CustomDatesException('The resource is booked between those dates.');                           
+                        if((!(prInsert.Close_Date__c < pr.Start_Date__c || prInsert.Start_Date__c > pr.Close_Date__c)) && prInsert.Id != pr.Id){
+                            throw new CustomDatesException('The resource ' + pr.Resource__r.Name + ' is booked between those dates.');                           
                         }
                     }                    
                 }

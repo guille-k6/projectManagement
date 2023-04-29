@@ -66,6 +66,7 @@
 		<members>Project__c.Close_Date__c</members>
 		<members>Project__c.Completed_Hours__c</members>
 		<members>Project__c.Cost__c</members>
+		<members>Project__c.Economic_Status__c</members>
 		<members>Project__c.Opportunity__c</members>
 		<members>Project__c.Squad_Lead__c</members>
 		<members>Project__c.Start_Date__c</members>
@@ -112,6 +113,12 @@
 	<types>
 		<members>*</members>
 		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<members>Project_Product__c.All</members>
+		<members>Project_Resource__c.All</members>
+		<members>Project__c.All</members>
+		<name>ListView</name>
 	</types>
 	<types>
 		<members>Admin</members>

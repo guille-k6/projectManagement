@@ -222,7 +222,7 @@
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2023-04-24</startDate>
-            <startTime>19:35:00.000Z</startTime>
+            <startTime>17:50:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
