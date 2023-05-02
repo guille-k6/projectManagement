@@ -18,8 +18,6 @@ export default class ResourceAssignment extends LightningElement {
         // Previously used theWrapper( {data, error} ) didn't work refresh apex that way.
         this.refresh = result
         if(result.data) {
-          console.log('aca esta la data');
-          console.log(result.data);
           this.data = result.data;
           this.error = undefined;
 
@@ -50,9 +48,7 @@ export default class ResourceAssignment extends LightningElement {
 
   renderedCallback(){
     if(this.data){
-      console.log(JSON.parse(JSON.stringify(this.data.project)));
       const userBoxes = this.template.querySelectorAll('.userBox');
-
       userBoxes.forEach((box) => {
         const parent = box.parentNode;
         const lastChild = parent.lastChild;
@@ -185,7 +181,6 @@ export default class ResourceAssignment extends LightningElement {
             userBox.removeChild(newDiv);
             assignButton.disabled = false;
           }, 6000);
-          console.log('fill all the fields!');
         }
 
       }
@@ -196,12 +191,10 @@ export default class ResourceAssignment extends LightningElement {
     }else if(selectedUsers.length > 0){
       addResources( { projectId : this.recordId, jsonResources : JSON.stringify(selectedUsers) } )
       .then(response => {
-        console.log('se asigno bien');
         this.showToastMessage(true);
         refreshApex(this.refresh);
       })
       .catch(error => {
-        console.log(error);
         const str = error.body.pageErrors[0].message
         const regex = /Exception: (.*)/; // regular expression to match the text after "Exception: "
         const match = regex.exec(str); // applying the regular expression on the input string
@@ -239,11 +232,6 @@ export default class ResourceAssignment extends LightningElement {
         });
         this.dispatchEvent(toast);  
     }
-  }
-
-  clickTry(){
-    console.log(this.hasRequirements);
-    console.log(JSON.parse(JSON.stringify(this.requirements)));
   }
 
 }

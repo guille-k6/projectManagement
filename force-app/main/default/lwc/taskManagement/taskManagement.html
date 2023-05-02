@@ -1,0 +1,29 @@
+<template>
+    <template if:false={data}>
+        <p>Spinner</p>
+    </template>
+    <template if:true={data}>
+        <div class="projectsContainer">
+            <template if:false={data.hasTasks}>
+                <p>No hay ninguna tarea en ningun proyecto aun.</p>
+            </template>
+            <template if:true={data.hasTasks}>
+                <template for:each={data.projectWithTasks} for:item="projectWithTask">
+                    <div key={projectWithTask.project.Id}>
+                        <p>{projectWithTask.project.Name} - Tareas pendientes: {projectWithTask.project.Pending_Tasks__c}</p>
+                    </div>
+                    <template for:each={projectWithTask.tasks} for:item="task">
+                        <div key={task.Id}>
+                            <p>{task.Summary__c} - {task.Status__c}</p>
+                            <div>
+                                <!-- <template if:true={task.isInProgress}>
+
+                                </template> -->
+                            </div>
+                        </div>
+                    </template>
+                </template>
+            </template>
+        </div>
+    </template>
+</template>
