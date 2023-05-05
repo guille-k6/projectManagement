@@ -9,58 +9,22 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>CompactLayout</name>
+	</types>
+	<types>
 		<members>Project_Management</members>
 		<name>CustomApplication</name>
 	</types>
 	<types>
-		<members>Account.Active__c</members>
-		<members>Account.CustomerPriority__c</members>
-		<members>Account.NumberofLocations__c</members>
-		<members>Account.SLAExpirationDate__c</members>
-		<members>Account.SLASerialNumber__c</members>
-		<members>Account.SLA__c</members>
-		<members>Account.UpsellOpportunity__c</members>
-		<members>Case.EngineeringReqNumber__c</members>
-		<members>Case.PotentialLiability__c</members>
-		<members>Case.Product__c</members>
-		<members>Case.SLAViolation__c</members>
-		<members>Contact.Languages__c</members>
-		<members>Contact.Level__c</members>
-		<members>Goal.OrigGoalId__c</members>
-		<members>Lead.CurrentGenerators__c</members>
-		<members>Lead.NumberofLocations__c</members>
-		<members>Lead.Primary__c</members>
-		<members>Lead.ProductInterest__c</members>
-		<members>Lead.SICCode__c</members>
-		<members>Metric.OrigMetricId__c</members>
-		<members>Opportunity.CurrentGenerators__c</members>
-		<members>Opportunity.DeliveryInstallationStatus__c</members>
-		<members>Opportunity.MainCompetitors__c</members>
-		<members>Opportunity.OrderNumber__c</members>
-		<members>Opportunity.Project_Manager__c</members>
-		<members>Opportunity.Start_Date__c</members>
-		<members>Opportunity.Total_Amount__c</members>
-		<members>Opportunity.TrackingNumber__c</members>
-		<members>OpportunityLineItem.Amount__c</members>
-		<members>OpportunityLineItem.Detail__c</members>
-		<members>OpportunityLineItem.Role1__c</members>
-		<members>OpportunityLineItem.Role__c</members>
-		<members>OpportunityLineItem.Squad_Lead__c</members>
-		<members>OpportunityLineItem.Total_Amount__c</members>
-		<members>Product2.Role__c</members>
-		<members>Project_Product__c.Amount__c</members>
-		<members>Project_Product__c.Completed_Hours__c</members>
-		<members>Project_Product__c.Project__c</members>
-		<members>Project_Product__c.Quantity__c</members>
-		<members>Project_Product__c.Role__c</members>
-		<members>Project_Resource__c.AssignedHours__c</members>
-		<members>Project_Resource__c.Close_Date__c</members>
-		<members>Project_Resource__c.Cost__c</members>
-		<members>Project_Resource__c.Is_Squad_Lead__c</members>
-		<members>Project_Resource__c.Project__c</members>
-		<members>Project_Resource__c.Resource__c</members>
-		<members>Project_Resource__c.Role__c</members>
-		<members>Project_Resource__c.Start_Date__c</members>
+		<members>Project_Task__c.Close_Date__c</members>
+		<members>Project_Task__c.Description__c</members>
+		<members>Project_Task__c.Estimated_Hours__c</members>
+		<members>Project_Task__c.Project_Resource__c</members>
+		<members>Project_Task__c.Recorded_Hours__c</members>
+		<members>Project_Task__c.Start_Date__c</members>
+		<members>Project_Task__c.Status__c</members>
+		<members>Project_Task__c.Summary__c</members>
 		<members>Project__c.Amount__c</members>
 		<members>Project__c.Client__c</members>
 		<members>Project__c.Close_Date__c</members>
@@ -68,6 +32,8 @@
 		<members>Project__c.Cost__c</members>
 		<members>Project__c.Economic_Status__c</members>
 		<members>Project__c.Opportunity__c</members>
+		<members>Project__c.Pending_Tasks__c</members>
+		<members>Project__c.Project_Manager__c</members>
 		<members>Project__c.Squad_Lead__c</members>
 		<members>Project__c.Start_Date__c</members>
 		<members>Project__c.Start_Today__c</members>
@@ -77,24 +43,21 @@
 		<members>Project__c.Validation_Profit__c</members>
 		<members>Project__c.Validation_Squad_Lead__c</members>
 		<members>Project__c.Validation_Status__c</members>
+		<members>Project__c.Validation_Tasks__c</members>
 		<members>User.Rate__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
-		<members>Opportunity</members>
-		<members>OpportunityLineItem</members>
 		<members>Project_Product__c</members>
 		<members>Project_Resource__c</members>
+		<members>Project_Task__c</members>
 		<members>Project__c</members>
-		<members>User</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
-		<members>*</members>
-		<name>CustomTab</name>
-	</types>
-	<types>
-		<members>*</members>
+		<members>Project_Management_UtilityBar</members>
+		<members>Project_Task_Record_Page</members>
+		<members>Task_Management</members>
 		<name>FlexiPage</name>
 	</types>
 	<types>
@@ -102,11 +65,9 @@
 		<name>Flow</name>
 	</types>
 	<types>
-		<members>Opportunity-Opportunity %28Sales%29 Layout</members>
-		<members>Opportunity-Opportunity Layout</members>
-		<members>OpportunityLineItem-Opportunity Product Layout</members>
 		<members>Project_Product__c-Project Product Layout</members>
 		<members>Project_Resource__c-Project Resource Layout</members>
+		<members>Project_Task__c-Project Task Layout</members>
 		<members>Project__c-Project Layout</members>
 		<name>Layout</name>
 	</types>
@@ -115,37 +76,26 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
-		<members>Project_Product__c.All</members>
-		<members>Project_Resource__c.All</members>
-		<members>Project__c.All</members>
-		<name>ListView</name>
-	</types>
-	<types>
 		<members>Admin</members>
 		<members>Project Manager</members>
 		<name>Profile</name>
 	</types>
 	<types>
-		<members>*</members>
-		<name>ProfilePasswordPolicy</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>ProfileSessionSetting</name>
-	</types>
-	<types>
+		<members>unfiled$public/Copy_of_Amount_Sold_vs_Actual_Project_C_bBJ</members>
+		<members>unfiled$public/Hours_Required_vs_Assigned_ACW</members>
+		<members>unfiled$public/My_Projects_EzS</members>
 		<members>unfiled$public/Percentajes_of_nA4</members>
 		<members>unfiled$public/Project_with_indicators_Gq7</members>
 		<members>unfiled$public/flow_screen_prebuilt_report</members>
 		<name>Report</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>Opportunities_With_Projects</members>
+		<members>Project_Resources</members>
+		<members>Project_with_Products</members>
+		<members>Project_with_Resources</members>
+		<members>project_and_resources</members>
 		<name>ReportType</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>Role</name>
 	</types>
 	<types>
 		<members>Project__c.Error_Balance</members>
@@ -153,6 +103,7 @@
 		<members>Project__c.Error_Project_Resource</members>
 		<members>Project__c.Error_Squad_Lead</members>
 		<members>Project__c.Error_Status</members>
+		<members>Project__c.Error_Tasks</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>

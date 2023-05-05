@@ -10,7 +10,6 @@ public class ProjectWrapper {
         @AuraEnabled
         public List<User> users;
     }
-    
     @AuraEnabled
     public Boolean hasRequirements;
     @AuraEnabled

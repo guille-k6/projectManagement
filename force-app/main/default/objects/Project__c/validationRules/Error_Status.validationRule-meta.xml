@@ -3,6 +3,6 @@
     <fullName>Error_Status</fullName>
     <active>true</active>
     <description>The PM will not be able to make changes while the project is in progress.</description>
-    <errorConditionFormula>IF( ! Validation_Status__c  , false, true)</errorConditionFormula>
+    <errorConditionFormula>Validation_Status__c</errorConditionFormula>
     <errorMessage>You can&apos;t make changes to a record if it is already in progress</errorMessage>
 </ValidationRule>
