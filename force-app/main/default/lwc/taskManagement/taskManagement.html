@@ -32,7 +32,7 @@
                                 <p class="taskLayoutChild w-10 recordedHours">{task.Recorded_Hours__c}</p>
                                 <template if:true={task.isStarted}>
                                     <div class="taskLayoutChild buttonsLayout">
-                                        <input type="number" class="myButton lwc-input numberInput" label="Hours to record" placeholder="Hours" data-taskid={task.Id}>
+                                        <input type="number" class="myButton lwc-input numberInput" placeholder="Hours" data-taskid={task.Id}>
                                         <lightning-button label="Submit" class="slds-m-left_x-small myButton" data-taskid={task.Id} onclick={handleSubmitClick}></lightning-button>
                                         <lightning-button variant="brand" class="slds-m-left_x-small myButton" label="Complete" data-taskid={task.Id} onclick={handleCompleteClick} disabled></lightning-button>
                                     </div>
