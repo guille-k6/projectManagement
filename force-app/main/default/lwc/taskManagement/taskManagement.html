@@ -1,12 +1,14 @@
 <!-- sldsValidatorIgnore -->
 <template>
-    <template if:false={data}>
-        <p>Spinner</p>
-    </template>
-    <template if:true={data}>
-        <div class="projectsContainer">
+    <div class="projectsContainer">
+        <template if:false={data}>
+            <div class="exampleHolder">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+        <template if:true={data}>
             <template if:false={data.hasTasks}>
-                <p>No hay ninguna tarea en ningun proyecto aun.</p>
+                <p>You have no pending tasks.</p>
             </template>
             <template if:true={data.hasTasks}>
                 <template for:each={TaskWrapperContainer} for:item="projectWithTask">
@@ -40,11 +42,12 @@
                                         <lightning-button variant="brand" class="slds-m-left_x-small myButton" label="Start" onclick={handleStartClick} data-taskid={task.Id}></lightning-button>
                                     </div>
                                 </template>
+                                <!-- <c-task-hours task={task}></c-task-hours> -->
                             </div>
                         </template>
                     </div>
                 </template>
             </template>
-        </div>
-    </template>
+        </template>
+    </div>
 </template>

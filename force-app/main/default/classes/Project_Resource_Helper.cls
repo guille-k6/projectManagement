@@ -68,4 +68,22 @@ public class Project_Resource_Helper {
             }
         }
     }
+    
+    public static void updateName(List<Project_Resource__c> projectResources){
+        Set<Id> resourcesIds = new Set<Id>();
+        for(Project_Resource__c pr : projectResources){
+            resourcesIds.add(pr.Resource__c);
+        }
+        Map<Id, User> resourcesMap = new Map<Id, User>([SELECT Id, Name FROM User WHERE Id IN :resourcesIds]);
+        
+        for(Project_Resource__c pr : projectResources){
+            String resourceName = '';
+            if(resourcesMap.containsKey(pr.Resource__c)){
+                resourceName = resourcesMap.get(pr.Resource__c).Name;
+            }
+            String newName = resourceName;
+            pr.Name = newName;
+        }
+        
+    }
 }

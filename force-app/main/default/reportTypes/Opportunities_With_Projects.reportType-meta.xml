@@ -343,6 +343,11 @@
             <field>Validation_Tasks__c</field>
             <table>Opportunity.Projects__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Validation_Project_Task__c</field>
+            <table>Opportunity.Projects__r</table>
+        </columns>
         <masterLabel>Projects</masterLabel>
     </sections>
 </ReportType>

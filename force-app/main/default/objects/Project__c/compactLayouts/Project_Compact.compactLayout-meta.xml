@@ -5,6 +5,5 @@
     <fields>Start_Date__c</fields>
     <fields>Close_Date__c</fields>
     <fields>Status__c</fields>
-    <fields>Amount__c</fields>
     <label>Project Compact</label>
 </CompactLayout>

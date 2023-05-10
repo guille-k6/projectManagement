@@ -2,10 +2,166 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>57.0</apiVersion>
     <decisions>
+        <name>Are_fields_valid</name>
+        <label>Are fields valid</label>
+        <locationX>842</locationX>
+        <locationY>998</locationY>
+        <defaultConnector>
+            <targetReference>Create_Task</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Any_field_is_null</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>ProjectTasks.Description__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectResources</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectTasks.Close_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectTasks.Estimated_Hours__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectTasks.Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectTasks.Summary__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Show_null_field_message</targetReference>
+            </connector>
+            <label>Any field is null</label>
+        </rules>
+        <rules>
+            <name>Invalid_dates</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>ProjectTasks.Start_Date__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>ProjectTasks.Close_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectTasks.Start_Date__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Start_date_greater_than_Close_Date</targetReference>
+            </connector>
+            <label>Invalid dates</label>
+        </rules>
+        <rules>
+            <name>Invalid_Dates_Range</name>
+            <conditionLogic>NOT(1 AND 2)</conditionLogic>
+            <conditions>
+                <leftValueReference>ProjectTasks.Start_Date__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Project.Start_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectTasks.Close_Date__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Project.Close_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invalid_date_range</targetReference>
+            </connector>
+            <label>Invalid Dates Range</label>
+        </rules>
+        <rules>
+            <name>Invalid_PR_Date_Range</name>
+            <conditionLogic>NOT(1 AND 2)</conditionLogic>
+            <conditions>
+                <leftValueReference>ProjectTasks.Start_Date__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Project_Resource.Start_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ProjectTasks.Close_Date__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Project_Resource.Close_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invalid_PR_Date_Range_Screen</targetReference>
+            </connector>
+            <label>Invalid PR Date Range</label>
+        </rules>
+        <rules>
+            <name>Estimated_Hours_Invalid</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ProjectTasks.Estimated_Hours__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invalid_estimated_hours</targetReference>
+            </connector>
+            <label>Estimated Hours Invalid</label>
+        </rules>
+        <rules>
+            <name>Too_many_assigned_hours</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Sum_Of_Hours</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>Get_Project_Resource.AssignedHours__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Screen_Too_Many_assigned_Hours</targetReference>
+            </connector>
+            <label>Too many assigned hours</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Copy_1_of_Is_Squad_Lead</name>
         <label>Is Squad Lead</label>
-        <locationX>314</locationX>
-        <locationY>518</locationY>
+        <locationX>1502</locationX>
+        <locationY>638</locationY>
         <defaultConnector>
             <targetReference>Project_Tasks</targetReference>
         </defaultConnector>
@@ -44,12 +200,24 @@
     </dynamicChoiceSets>
     <environments>Default</environments>
     <formulas>
+        <name>AvailableHours</name>
+        <dataType>Number</dataType>
+        <expression>{!Get_Project_Resource.AssignedHours__c} - {!Get_Project_Resource.Recorded_Hours__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
         <name>CurrentUserId</name>
         <dataType>String</dataType>
         <expression>CASESAFEID({!$User.Id})</expression>
     </formulas>
+    <formulas>
+        <name>Sum_Of_Hours</name>
+        <dataType>Number</dataType>
+        <expression>{!ProjectTasks.Estimated_Hours__c} + {!Get_Project_Resource.Recorded_Hours__c}</expression>
+        <scale>2</scale>
+    </formulas>
     <interviewLabel>Assign Project Task {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Assign Project Task</label>
+    <label>Task Assignment</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -72,13 +240,13 @@
     <recordCreates>
         <name>Create_Task</name>
         <label>Create Task</label>
-        <locationX>50</locationX>
-        <locationY>758</locationY>
+        <locationX>1634</locationX>
+        <locationY>1118</locationY>
         <connector>
             <targetReference>Button</targetReference>
         </connector>
         <faultConnector>
-            <targetReference>exception_handle</targetReference>
+            <targetReference>Fault_Path</targetReference>
         </faultConnector>
         <inputAssignments>
             <field>Close_Date__c</field>
@@ -128,8 +296,8 @@
     <recordLookups>
         <name>Get_Project</name>
         <label>Get Project</label>
-        <locationX>314</locationX>
-        <locationY>158</locationY>
+        <locationX>1502</locationX>
+        <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Project_Resources</targetReference>
@@ -147,10 +315,31 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Get_Project_Resource</name>
+        <label>Get Project Resource</label>
+        <locationX>842</locationX>
+        <locationY>878</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Are_fields_valid</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ProjectResources</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Project_Resource__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Squad_Lead</name>
         <label>Get Squad Lead</label>
-        <locationX>314</locationX>
-        <locationY>398</locationY>
+        <locationX>1502</locationX>
+        <locationY>518</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_1_of_Is_Squad_Lead</targetReference>
@@ -170,8 +359,8 @@
     <recordLookups>
         <name>Project_Resources</name>
         <label>Project Resources</label>
-        <locationX>314</locationX>
-        <locationY>278</locationY>
+        <locationX>1502</locationX>
+        <locationY>398</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Squad_Lead</targetReference>
@@ -191,8 +380,8 @@
     <screens>
         <name>Button</name>
         <label>Button</label>
-        <locationX>50</locationX>
-        <locationY>878</locationY>
+        <locationX>1634</locationX>
+        <locationY>1238</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -206,16 +395,85 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>exception_handle</name>
-        <label>exception handle</label>
-        <locationX>314</locationX>
-        <locationY>878</locationY>
+        <name>Entry_Question</name>
+        <label>Entry_Question</label>
+        <locationX>1502</locationX>
+        <locationY>158</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Get_Project</targetReference>
+        </connector>
+        <fields>
+            <name>click_next</name>
+            <fieldText>&lt;p&gt;Click Next if you want to assign a Task to a Project&apos;s Resource&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>asd</description>
+        <name>Fault_Path</name>
+        <label>Fault Path</label>
+        <locationX>1898</locationX>
+        <locationY>1238</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
-            <name>Error</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 14px; font-family: &amp;quot;open sans&amp;quot;, Helvetica, Arial, sans-serif; color: rgb(51, 63, 73);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <name>error_fault</name>
+            <fieldText>&lt;p&gt;The estimated hours of the task exceeds the assigned hours of the project resource.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please contact your admin for support.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Invalid_date_range</name>
+        <label>Invalid date range</label>
+        <locationX>578</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>error_daterange</name>
+            <fieldText>&lt;p&gt;The dates range of the task must be within the project date range ({!Get_Project.Start_Date__c} - &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Project.Close_Date__c}&lt;/span&gt;).&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Press&amp;nbsp;&lt;u&gt;Previous&amp;nbsp;&lt;/u&gt;to fix your record or press&amp;nbsp;&lt;u&gt;Finish&lt;/u&gt;&amp;nbsp;to cancel the operation.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Invalid_estimated_hours</name>
+        <label>Invalid estimated hours</label>
+        <locationX>1106</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Invalid_EstimatedHours</name>
+            <fieldText>&lt;p&gt;The estimated hours must be at least 1.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Press&amp;nbsp;&lt;u&gt;Previous&amp;nbsp;&lt;/u&gt;to fix your record or press&amp;nbsp;&lt;u&gt;Finish&lt;/u&gt;&amp;nbsp;to cancel the operation.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Invalid_PR_Date_Range_Screen</name>
+        <label>Invalid PR Date Range Scren</label>
+        <locationX>842</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>error_invalidprdaterange</name>
+            <fieldText>&lt;p&gt;The dates range of the task must be within the project&apos;s resource date range ({!Get_Project_Resource.Start_Date__c} - {!Get_Project_Resource.Close_Date__c}).&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Press&amp;nbsp;&lt;u&gt;Previous&amp;nbsp;&lt;/u&gt;to fix your record or press&amp;nbsp;&lt;u&gt;Finish&lt;/u&gt;&amp;nbsp;to cancel the operation.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -224,8 +482,8 @@
     <screens>
         <name>Project_Tasks</name>
         <label>Project Tasks</label>
-        <locationX>578</locationX>
-        <locationY>638</locationY>
+        <locationX>2162</locationX>
+        <locationY>758</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -238,15 +496,63 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>Screen_Too_Many_assigned_Hours</name>
+        <label>Screen Too Many assigned Hours</label>
+        <locationX>1370</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>error_toomanyassignedhours</name>
+            <fieldText>&lt;p&gt;You cannot assign more than {!AvailableHours} hours.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Press&amp;nbsp;&lt;u&gt;Previous&amp;nbsp;&lt;/u&gt;to fix your record or press&amp;nbsp;&lt;u&gt;Finish&lt;/u&gt;&amp;nbsp;to cancel the operation.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Show_null_field_message</name>
+        <label>Show null field message</label>
+        <locationX>50</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Null_field_message</name>
+            <fieldText>&lt;p&gt;You must fill all the fields.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Press &lt;u&gt;Previous &lt;/u&gt;to complete your record or press &lt;u&gt;Finish&lt;/u&gt; to cancel the operation.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Start_date_greater_than_Close_Date</name>
+        <label>Start date greater than Close Date</label>
+        <locationX>314</locationX>
+        <locationY>1118</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>date1_error</name>
+            <fieldText>&lt;p&gt;Start Date must be before Close Date and after today.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Press&amp;nbsp;&lt;u&gt;Previous&amp;nbsp;&lt;/u&gt;to fix your record or press&amp;nbsp;&lt;u&gt;Finish&lt;/u&gt;&amp;nbsp;to cancel the operation.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>Tasks</name>
         <label>Tasks</label>
-        <locationX>50</locationX>
-        <locationY>638</locationY>
+        <locationX>842</locationX>
+        <locationY>758</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Create_Task</targetReference>
+            <targetReference>Get_Project_Resource</targetReference>
         </connector>
         <fields>
             <name>TasksAssignement</name>
@@ -361,13 +667,13 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>188</locationX>
+        <locationX>1376</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Project</targetReference>
+            <targetReference>Entry_Question</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>Project</name>
         <dataType>String</dataType>

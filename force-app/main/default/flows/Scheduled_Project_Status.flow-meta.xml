@@ -96,7 +96,7 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Close_Date__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <operator>LessThanOrEqualTo</operator>
                 <rightValue>
                     <elementReference>$Flow.CurrentDate</elementReference>
                 </rightValue>
@@ -255,7 +255,7 @@
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2023-04-25</startDate>
-            <startTime>00:00:00.000Z</startTime>
+            <startTime>17:07:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

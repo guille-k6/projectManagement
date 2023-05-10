@@ -38,7 +38,6 @@ export default class TaskManagement extends LightningElement {
               tasks
             }
           });
-          console.log(JSON.parse(JSON.stringify(this.TaskWrapperContainer)));
         }else if(result.error){
           this.error = result.error;
         }
@@ -58,6 +57,7 @@ export default class TaskManagement extends LightningElement {
         refreshApex(this.refresh);
       })
       .catch ( error =>{
+        console.log(error);
         const toast = new ShowToastEvent({
           title: 'Failed to update task status',
           message: error,
@@ -83,6 +83,7 @@ export default class TaskManagement extends LightningElement {
         refreshApex(this.refresh);
       })
       .catch ( error =>{
+        console.log(error);
         const toast = new ShowToastEvent({
           title: 'Failed to update task status',
           message: error.body.message,
@@ -94,8 +95,6 @@ export default class TaskManagement extends LightningElement {
 
     handleSubmitClick(e){
       const taskId = e.target.dataset.taskid;
-      console.log(taskId);
-      console.log('entre al handleSubmit');
       const input = this.template.querySelector(`input[data-taskid=${taskId}]`);
       const recordedHours = input.value;
       if(!recordedHours){
@@ -104,8 +103,6 @@ export default class TaskManagement extends LightningElement {
       
       updateRecordedHours( { taskId : taskId, recordedHours : recordedHours } )
       .then( result => {
-        console.log('Paso por el then');
-        console.log(result);
         refreshApex(this.refresh);
         input.value = null;
         })

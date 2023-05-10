@@ -37,6 +37,7 @@ public class Project_Task_Helper {
                             }                            
                         }
                         if((pt.Estimated_Hours__c + completedHours) > pr.AssignedHours__c){
+                            pt.addError('The project resource only has: ' + String.valueOf(pr.AssignedHours__c.intValue() - completedHours) + ' hours left.');
                             throw new TaskException('The project resource only has: ' + String.valueOf(pr.AssignedHours__c.intValue() - completedHours) + ' hours left.');
                         }
                     }

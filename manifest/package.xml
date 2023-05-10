@@ -17,6 +17,24 @@
 		<name>CustomApplication</name>
 	</types>
 	<types>
+		<members>Opportunity.Project_End_Date__c</members>
+		<members>Opportunity.Project_Manager__c</members>
+		<members>Opportunity.Project_Start_Date__c</members>
+		<members>Project_Product__c.Amount__c</members>
+		<members>Project_Product__c.Completed_Hours__c</members>
+		<members>Project_Product__c.Project__c</members>
+		<members>Project_Product__c.Quantity__c</members>
+		<members>Project_Product__c.Role__c</members>
+		<members>Project_Resource__c.AssignedHours__c</members>
+		<members>Project_Resource__c.Close_Date__c</members>
+		<members>Project_Resource__c.Cost__c</members>
+		<members>Project_Resource__c.Is_Squad_Lead__c</members>
+		<members>Project_Resource__c.Project__c</members>
+		<members>Project_Resource__c.Recorded_Cost__c</members>
+		<members>Project_Resource__c.Recorded_Hours__c</members>
+		<members>Project_Resource__c.Resource__c</members>
+		<members>Project_Resource__c.Role__c</members>
+		<members>Project_Resource__c.Start_Date__c</members>
 		<members>Project_Task__c.Close_Date__c</members>
 		<members>Project_Task__c.Description__c</members>
 		<members>Project_Task__c.Estimated_Hours__c</members>
@@ -41,6 +59,7 @@
 		<members>Project__c.Total_Hours__c</members>
 		<members>Project__c.Validation_Hours__c</members>
 		<members>Project__c.Validation_Profit__c</members>
+		<members>Project__c.Validation_Project_Task__c</members>
 		<members>Project__c.Validation_Squad_Lead__c</members>
 		<members>Project__c.Validation_Status__c</members>
 		<members>Project__c.Validation_Tasks__c</members>
@@ -48,6 +67,7 @@
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>Days_Off__c</members>
 		<members>Project_Product__c</members>
 		<members>Project_Resource__c</members>
 		<members>Project_Task__c</members>
@@ -55,9 +75,14 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>CustomTab</name>
+	</types>
+	<types>
+		<members>Days_Off_Record_Page</members>
 		<members>Project_Management_UtilityBar</members>
 		<members>Project_Task_Record_Page</members>
-		<members>Task_Management</members>
+		<members>Team_Member_Record_Page</members>
 		<name>FlexiPage</name>
 	</types>
 	<types>
@@ -65,6 +90,7 @@
 		<name>Flow</name>
 	</types>
 	<types>
+		<members>Days_Off__c-Days Off Layout</members>
 		<members>Project_Product__c-Project Product Layout</members>
 		<members>Project_Resource__c-Project Resource Layout</members>
 		<members>Project_Task__c-Project Task Layout</members>
@@ -78,6 +104,7 @@
 	<types>
 		<members>Admin</members>
 		<members>Project Manager</members>
+		<members>Team Member</members>
 		<name>Profile</name>
 	</types>
 	<types>
@@ -98,12 +125,14 @@
 		<name>ReportType</name>
 	</types>
 	<types>
+		<members>Days_Off__c.VR_Days_Off_Dates</members>
 		<members>Project__c.Error_Balance</members>
 		<members>Project__c.Error_Hours</members>
 		<members>Project__c.Error_Project_Resource</members>
 		<members>Project__c.Error_Squad_Lead</members>
 		<members>Project__c.Error_Status</members>
 		<members>Project__c.Error_Tasks</members>
+		<members>Project__c.Error_no_Tasks</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>55.0</version>

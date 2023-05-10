@@ -18,7 +18,7 @@ public class ProjectTaskService {
         if(recordedHours < 0){
             throw new CustomDatesException('Invalid recorded hours number');            
         }
-        Project_Task__c task = [SELECT Id, Status__c, Estimated_Hours__c, Recorded_Hours__c FROM Project_Task__c WHERE Id = :taskId];  
+        Project_Task__c task = [SELECT Id, Status__c, Estimated_Hours__c, Recorded_Hours__c FROM Project_Task__c WHERE Id = :taskId]; 
         if((recordedHours + task.Recorded_Hours__c) > task.Estimated_Hours__c){
             throw new CustomDatesException('You cannot add more hours than the estimated total');            
         }else{

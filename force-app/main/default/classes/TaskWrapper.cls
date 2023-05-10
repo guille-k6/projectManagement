@@ -23,8 +23,7 @@ public class TaskWrapper {
     
 	@AuraEnabled(cacheable=true)
     public static TaskWrapper getTaskWrapper(){
-        //Id userId = UserInfo.getUserId(); TODO:: Remember uncomment this line and delete following line
-        Id userId = '005Dp000001xxWpIAI';
+        Id userId = UserInfo.getUserId();
         
         // All my assignments to projects
         List<Project_Resource__c> projectResources = [SELECT Id, Project__c, Start_Date__c, (SELECT Id, Summary__c, Status__c, Estimated_Hours__c, Recorded_Hours__c FROM Project_Tasks__r WHERE Status__c != 'Completed' ORDER BY Status__c DESC, Summary__c ASC)
