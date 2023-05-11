@@ -76,6 +76,16 @@
             <field>Cost__c</field>
             <table>Project_Resource__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Recorded_Hours__c</field>
+            <table>Project_Resource__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Recorded_Cost__c</field>
+            <table>Project_Resource__c</table>
+        </columns>
         <masterLabel>Projects Resources</masterLabel>
     </sections>
 </ReportType>

@@ -1,27 +1,68 @@
 public class ProjectWrapper {
     
+    public class Requirements{
+        public Requirements(Project_Product__c pp, List<User> u){
+            projectProduct = pp;
+            users = u;
+        }
+        @AuraEnabled
+        public Project_Product__c projectProduct;
+        @AuraEnabled
+        public List<User> users;
+    }
+    @AuraEnabled
+    public Boolean hasRequirements;
+    @AuraEnabled
+    public Boolean economicStatus;
+    @AuraEnabled
+    public Boolean isInKickoff;
     @auraEnabled
     public Project__c project;
     @auraEnabled
-    public Map<Project_Product__c, List<User>> productsWithUsers;
+    public List<Requirements> requirementList;
     
-    public ProjectWrapper (Project__c Project, Map<Project_Product__c, List<User>> productsWithUsers){
+    public ProjectWrapper (Project__c Project, List<Requirements> requirements, Boolean hasRequirements, Boolean economicStatus, Boolean isInKickoff){
         this.project = project;
-        this.productsWithUsers = productsWithUsers;
+        this.requirementList = requirements;
+        this.hasRequirements = hasRequirements;
+        this.economicStatus = economicStatus;
+        this.isInKickoff = isInKickoff;
     }      	 
 
 
     @AuraEnabled(cacheable=true)
     public static ProjectWrapper getProject (Id projectId) {
         
+        List<Requirements> requirementList = new List<Requirements>();
+        
         // Information related to the project.
-        Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c
+        Project__c project = [SELECT Id, Name, Amount__c, Client__c, Close_Date__c, Start_Date__c, Cost__c, Status__c, Economic_Status__c
                               FROM Project__c WHERE Id = :projectId];
         
+        Boolean economicStatus = false;
+        if(project.Cost__c <= project.Amount__c){
+           economicStatus = true;
+        }
+        
+        Boolean isInKickoff = false;
+        if(project.Status__c == 'Pre-Kickoff'){
+            isInKickoff = true;
+        }
+        
+        
         // Project products of the project.
-        List<Project_Product__c> projectProducts = [SELECT Id, Project__c, Quantity__c, Amount__c, Role__c, Completed_Hours__c 
+        List<Project_Product__c> allProjectProducts = [SELECT Id, Project__c, Quantity__c, Amount__c, Role__c, Completed_Hours__c 
 													FROM Project_Product__c 
                                                     WHERE Project__c = :projectId];
+        
+        List<Project_Product__c> projectProducts = new List<Project_Product__c>();
+        for(Project_Product__c pp : allProjectProducts){          
+            if(pp.Quantity__c > pp.Completed_Hours__c){
+                projectProducts.add(pp);
+            }
+        }
+        System.debug(projectProducts);
+        
         // Roles required in the project.
         Set<String> rolesNames = new Set<String>();
         for(Project_Product__c pp : projectProducts){
@@ -52,7 +93,7 @@ public class ProjectWrapper {
         List<User> usersAvailable = [SELECT Id, Name, Rate__c, UserRole.Name FROM User
                                     WHERE UserRole.Name IN :rolesNames AND ID NOT IN :projectResourcesNotAvailable];
         
-        Map<Project_Product__c, List<User>> productsWithUsers = new Map<Project_Product__c, List<User>>();
+        Map<String, List<User>> productsWithUsers = new Map<String, List<User>>();
         for(Project_Product__c pp : projectProducts){
             List<User> usersWithRoleOfPP = new List<User>();
             for(User u : usersAvailable){
@@ -60,10 +101,15 @@ public class ProjectWrapper {
                     usersWithRoleOfPP.add(u);
                 }
             }
-            productsWithUsers.put(pp, usersWithRoleOfPP);         
+            Requirements r = new Requirements(pp, usersWithRoleOfPP);
+            requirementList.add(r);
+        }
+        Boolean hasRequirements = false;
+        if(requirementList.size() > 0){
+           hasRequirements = true;
         }
         
-        ProjectWrapper wrapper = new ProjectWrapper(project, productsWithUsers);
+        ProjectWrapper wrapper = new ProjectWrapper(project, requirementList, hasRequirements, economicStatus, isInKickoff);
         return wrapper;
     }
 }

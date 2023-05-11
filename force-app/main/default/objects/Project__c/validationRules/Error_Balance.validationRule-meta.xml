@@ -4,7 +4,6 @@
     <active>true</active>
     <description>There is an overall loss. The Project Manager must rrealocate resources to ensure profit.</description>
     <errorConditionFormula>AND( ISPICKVAL(Status__c , &apos;In Progress&apos;),
-IF( ! Validation_Profit__c , false, true)
-)</errorConditionFormula>
+Validation_Profit__c)</errorConditionFormula>
     <errorMessage>This record can&apos;t be updated as &quot;In progress&quot; if the balance shows an overall &quot;Loss&quot;.</errorMessage>
 </ValidationRule>

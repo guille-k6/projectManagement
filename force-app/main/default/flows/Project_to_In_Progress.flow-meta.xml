@@ -1,187 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>57.0</apiVersion>
-    <assignments>
-        <name>Add_Failed_Project</name>
-        <label>Add Failed Project</label>
-        <locationX>528</locationX>
-        <locationY>1295</locationY>
-        <assignmentItems>
-            <assignToReference>ProjectsFailed</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Loop_Projects</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_Projects</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Add_Projects_To_Empty_Collection</name>
-        <label>Add Projects To Empty Collection</label>
-        <locationX>264</locationX>
-        <locationY>1415</locationY>
-        <assignmentItems>
-            <assignToReference>ProjectsToUpdate</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Loop_Projects</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_Projects</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_new_field_value</name>
-        <label>Assign new field value</label>
-        <locationX>264</locationX>
-        <locationY>1295</locationY>
-        <assignmentItems>
-            <assignToReference>Loop_Projects.Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>In Progress</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Add_Projects_To_Empty_Collection</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Check_Validation_Hours</name>
-        <label>Check Validation Hours</label>
-        <locationX>528</locationX>
-        <locationY>1175</locationY>
-        <assignmentItems>
-            <assignToReference>Loop_Projects.Validation_Hours__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Add_Failed_Project</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Check_Validation_Profit</name>
-        <label>Check Validation Profit</label>
-        <locationX>792</locationX>
-        <locationY>935</locationY>
-        <assignmentItems>
-            <assignToReference>Loop_Projects.Validation_Profit__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Copy_1_of_Add_Failed_Project</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Check_Validation_Squad_Lead</name>
-        <label>Check Validation Squad Lead</label>
-        <locationX>1056</locationX>
-        <locationY>695</locationY>
-        <assignmentItems>
-            <assignToReference>Loop_Projects.Validation_Squad_Lead__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Copy_2_of_Add_Failed_Project</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Copy_1_of_Add_Failed_Project</name>
-        <label>Copy 1 of Add Failed Project</label>
-        <locationX>792</locationX>
-        <locationY>1055</locationY>
-        <assignmentItems>
-            <assignToReference>ProjectsFailed</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Loop_Projects</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_Projects</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Copy_2_of_Add_Failed_Project</name>
-        <label>Copy 2 of Add Failed Project</label>
-        <locationX>1056</locationX>
-        <locationY>815</locationY>
-        <assignmentItems>
-            <assignToReference>ProjectsFailed</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Loop_Projects</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_Projects</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Copy_2_of_unckeck_validation</name>
-        <label>Copy 2 of unckeck validation</label>
-        <locationX>264</locationX>
-        <locationY>1175</locationY>
-        <assignmentItems>
-            <assignToReference>Loop_Projects.Validation_Hours__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_new_field_value</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Uncheck_Validation_Squat</name>
-        <label>Uncheck Validation Squat</label>
-        <locationX>594</locationX>
-        <locationY>695</locationY>
-        <assignmentItems>
-            <assignToReference>Loop_Projects.Validation_Squad_Lead__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loss_or_Profit</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Unckeck_Validation_Profit</name>
-        <label>Unckeck Validation Profit</label>
-        <locationX>396</locationX>
-        <locationY>935</locationY>
-        <assignmentItems>
-            <assignToReference>Loop_Projects.Validation_Profit__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Hours_Covered</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <name>Does_it_have_Squad_Lead</name>
         <label>Does it have Squad Lead?</label>
-        <locationX>825</locationX>
-        <locationY>575</locationY>
+        <locationX>611</locationX>
+        <locationY>311</locationY>
         <defaultConnector>
             <targetReference>Check_Validation_Squad_Lead</targetReference>
         </defaultConnector>
@@ -190,14 +14,14 @@
             <name>Yes</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Loop_Projects.Squad_Lead__c</leftValueReference>
+                <leftValueReference>$Record.Squad_Lead__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Uncheck_Validation_Squat</targetReference>
+                <targetReference>Uncheck_Validation_Squad_Lead</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -205,8 +29,8 @@
     <decisions>
         <name>Hours_Covered</name>
         <label>Hours Covered?</label>
-        <locationX>396</locationX>
-        <locationY>1055</locationY>
+        <locationX>182</locationX>
+        <locationY>791</locationY>
         <defaultConnector>
             <targetReference>Check_Validation_Hours</targetReference>
         </defaultConnector>
@@ -215,14 +39,14 @@
             <name>Yes1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Loop_Projects.Total_Hours__c</leftValueReference>
+                <leftValueReference>$Record.Total_Hours__c</leftValueReference>
                 <operator>LessThanOrEqualTo</operator>
                 <rightValue>
-                    <elementReference>Loop_Projects.Completed_Hours__c</elementReference>
+                    <elementReference>$Record.Completed_Hours__c</elementReference>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Copy_2_of_unckeck_validation</targetReference>
+                <targetReference>Project_To_In_Progress</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -230,8 +54,8 @@
     <decisions>
         <name>Loss_or_Profit</name>
         <label>Loss or Profit?</label>
-        <locationX>594</locationX>
-        <locationY>815</locationY>
+        <locationX>380</locationX>
+        <locationY>551</locationY>
         <defaultConnector>
             <targetReference>Check_Validation_Profit</targetReference>
         </defaultConnector>
@@ -240,14 +64,14 @@
             <name>Profit</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Loop_Projects.Amount__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>$Record.Amount__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
                 <rightValue>
-                    <elementReference>Loop_Projects.Cost__c</elementReference>
+                    <elementReference>$Record.Cost__c</elementReference>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Unckeck_Validation_Profit</targetReference>
+                <targetReference>Uncheck_Validation_Profit</targetReference>
             </connector>
             <label>Profit</label>
         </rules>
@@ -255,20 +79,6 @@
     <environments>Default</environments>
     <interviewLabel>Project to In Progress {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Project to In Progress</label>
-    <loops>
-        <name>Loop_Projects</name>
-        <label>Loop Projects</label>
-        <locationX>176</locationX>
-        <locationY>455</locationY>
-        <collectionReference>Get_Projects</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Does_it_have_Squad_Lead</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Update_Projects</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -288,49 +98,95 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Get_Projects</name>
-        <label>Get Projects</label>
-        <locationX>176</locationX>
-        <locationY>335</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Loop_Projects</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Project__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
-        <name>Update_Faied</name>
-        <label>Update Failed</label>
-        <locationX>176</locationX>
-        <locationY>2039</locationY>
-        <inputReference>ProjectsFailed</inputReference>
+        <name>Check_Validation_Hours</name>
+        <label>Check Validation Hours</label>
+        <locationX>314</locationX>
+        <locationY>911</locationY>
+        <inputAssignments>
+            <field>Validation_Hours__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
-        <name>Update_Projects</name>
-        <label>Update Projects</label>
-        <locationX>176</locationX>
-        <locationY>1919</locationY>
+        <name>Check_Validation_Profit</name>
+        <label>Check Validation Profit</label>
+        <locationX>578</locationX>
+        <locationY>671</locationY>
+        <inputAssignments>
+            <field>Validation_Profit__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Check_Validation_Squad_Lead</name>
+        <label>Check Validation Squad Lead</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Validation_Squad_Lead__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Project_To_In_Progress</name>
+        <label>Project To In Progress</label>
+        <locationX>50</locationX>
+        <locationY>911</locationY>
+        <inputAssignments>
+            <field>Validation_Hours__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Uncheck_Validation_Profit</name>
+        <label>Uncheck Validation Profit</label>
+        <locationX>182</locationX>
+        <locationY>671</locationY>
         <connector>
-            <targetReference>Update_Faied</targetReference>
+            <targetReference>Hours_Covered</targetReference>
         </connector>
-        <inputReference>ProjectsToUpdate</inputReference>
+        <inputAssignments>
+            <field>Validation_Profit__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Uncheck_Validation_Squad_Lead</name>
+        <label>Uncheck Validation Squad Lead</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Loss_or_Profit</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Validation_Squad_Lead__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>485</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Projects</targetReference>
+            <targetReference>Does_it_have_Squad_Lead</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -349,7 +205,7 @@
         </filters>
         <object>Project__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordAfterSave</triggerType>
+        <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
     <variables>

@@ -108,7 +108,13 @@
         <inputAssignments>
             <field>Close_Date__c</field>
             <value>
-                <elementReference>$Record.CloseDate</elementReference>
+                <elementReference>$Record.Project_End_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Name</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -126,7 +132,7 @@
         <inputAssignments>
             <field>Start_Date__c</field>
             <value>
-                <elementReference>$Record.Start_Date__c</elementReference>
+                <elementReference>$Record.Project_Start_Date__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

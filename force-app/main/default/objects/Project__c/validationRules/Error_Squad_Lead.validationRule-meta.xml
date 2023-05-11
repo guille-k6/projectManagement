@@ -4,7 +4,6 @@
     <active>true</active>
     <description>There is no squad Lead defined.</description>
     <errorConditionFormula>AND( ISPICKVAL(Status__c , &apos;In Progress&apos;),
-      IF(  !Validation_Squad_Lead__c  , false, true)
-    )</errorConditionFormula>
+Validation_Squad_Lead__c )</errorConditionFormula>
     <errorMessage>This record can&apos;t be updated as &quot;In progress&quot; if it doesn&apos;t have a squad lead assigned.</errorMessage>
 </ValidationRule>

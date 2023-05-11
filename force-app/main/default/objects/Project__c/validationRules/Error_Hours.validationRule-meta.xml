@@ -4,7 +4,6 @@
     <active>true</active>
     <description>There are not enough hours assigned to cover the hours required by the project.</description>
     <errorConditionFormula>AND( ISPICKVAL(Status__c , &apos;In Progress&apos;),
-IF( ! Validation_Hours__c  , false, true)
-)</errorConditionFormula>
+Validation_Hours__c)</errorConditionFormula>
     <errorMessage>This record can&apos;t be updated as &quot;In progress&quot; if the hours completed are less than the total amount of hours required.</errorMessage>
 </ValidationRule>

@@ -82,22 +82,6 @@
         </inputParameters>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
-    <assignments>
-        <name>Change_Status</name>
-        <label>Change Status</label>
-        <locationX>50</locationX>
-        <locationY>636</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>In Progress</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Update_Project_s_Status</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <name>Does_it_Have_Squad_Lead</name>
         <label>Does it Have Squad Lead?</label>
@@ -143,7 +127,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Change_Status</targetReference>
+                <targetReference>Update_Project_s_Status</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -204,7 +188,7 @@
         <name>Update_Project_s_Status</name>
         <label>Update Project&apos;s Status</label>
         <locationX>50</locationX>
-        <locationY>756</locationY>
+        <locationY>636</locationY>
         <inputAssignments>
             <field>Status__c</field>
             <value>
@@ -238,7 +222,7 @@
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2023-04-24</startDate>
-            <startTime>19:35:00.000Z</startTime>
+            <startTime>17:50:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

@@ -120,6 +120,26 @@
             <field>Validation_Hours__c</field>
             <table>Project__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Validation_Status__c</field>
+            <table>Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Economic_Status__c</field>
+            <table>Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Validation_Tasks__c</field>
+            <table>Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Validation_Project_Task__c</field>
+            <table>Project__c</table>
+        </columns>
         <masterLabel>Projects</masterLabel>
     </sections>
     <sections>
@@ -186,6 +206,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Cost__c</field>
+            <table>Project__c.Projects_Resources__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Recorded_Hours__c</field>
+            <table>Project__c.Projects_Resources__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Recorded_Cost__c</field>
             <table>Project__c.Projects_Resources__r</table>
         </columns>
         <masterLabel>Projects Resources</masterLabel>
